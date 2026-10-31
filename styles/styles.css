@@ -1,0 +1,109 @@
+/* Fondo general azul claro */
+.stApp {
+    background-color: #dceeff;
+    color: #17324d;
+}
+
+html,
+body,
+[data-testid="stAppViewContainer"],
+[data-testid="stHeader"],
+[data-testid="stMain"] {
+    background-color: #dceeff !important;
+}
+
+/* Contenedor principal */
+.block-container {
+    max-width: 760px;
+    padding-top: 3rem;
+}
+
+/* Títulos y textos */
+h1,
+h2,
+h3,
+p,
+label,
+[data-testid="stMarkdownContainer"] {
+    color: #17324d !important;
+}
+
+/* Contenedor del formulario */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    border: 2px solid #347bc1 !important;
+    border-radius: 16px;
+    background-color: #eef7ff !important;
+    padding: 1rem 1rem 0.75rem;
+    box-shadow: 0 4px 14px rgba(52, 123, 193, 0.2);
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"] h1 {
+    text-align: center;
+    font-size: 1.35rem;
+}
+
+/* Formulario */
+div[data-testid="stForm"] {
+    border: 1px solid #b5d4f0 !important;
+    border-radius: 12px;
+    padding: 1rem !important;
+    background-color: transparent !important;
+}
+
+/* Campos de entrada */
+[data-baseweb="input"] {
+    border: 1px solid #a9c8e5;
+    border-radius: 999px;
+    background-color: #ffffff;
+}
+
+[data-baseweb="input"] input {
+    color: #17324d !important;
+    -webkit-text-fill-color: #17324d !important;
+}
+
+[data-baseweb="input"] input::placeholder {
+    color: #71869b !important;
+    -webkit-text-fill-color: #71869b !important;
+}
+
+/* Botón Ingresar */
+div.stFormSubmitButton > button {
+    width: 100%;
+    border: 0;
+    border-radius: 999px;
+    background-color: #347bc1;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+div.stFormSubmitButton > button:hover {
+    background-color: #2463a6;
+}
+
+/* Texto del botón Ingresar */
+div.stFormSubmitButton > button p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Opciones debajo del formulario */
+div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button {
+    width: 100% !important;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.25rem !important;
+    border: 1px solid #2463a6 !important;
+    border-radius: 999px;
+    background-color: #9b1389 !important;
+    box-shadow: none !important;
+}
+
+/* Enlaces: contraseña y registro */
+div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button p,
+div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button span,
+div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button * {
+    color: #2463a6 !important;
+    -webkit-text-fill-color: #2463a6 !important;
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
