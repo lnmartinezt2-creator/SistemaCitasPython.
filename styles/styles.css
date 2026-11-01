@@ -1,4 +1,9 @@
-/* Fondo general azul claro */
+
+/* ==========================================
+   SISTEMA DE GESTIÓN DE CITAS
+   ESTILOS GENERALES
+========================================== */
+
 .stApp {
     background-color: #dceeff;
     color: #17324d;
@@ -15,7 +20,8 @@ body,
 /* Contenedor principal */
 .block-container {
     max-width: 760px;
-    padding-top: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 /* Títulos y textos */
@@ -28,92 +34,271 @@ label,
     color: #17324d !important;
 }
 
-/* Contenedor del formulario */
+/* ==========================================
+   CONTENEDOR DEL FORMULARIO
+========================================== */
+
 div[data-testid="stVerticalBlockBorderWrapper"] {
-    border: 2px solid #347bc1 !important;
+    border: 1px solid #c7def2 !important;
     border-radius: 16px;
     background-color: #eef7ff !important;
-    padding: 1rem 1rem 0.75rem;
-    box-shadow: 0 4px 14px rgba(52, 123, 193, 0.2);
+    padding: 1rem 1rem 0.5rem;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
 }
 
+/* Título principal */
 div[data-testid="stVerticalBlockBorderWrapper"] h1 {
     text-align: center;
     font-size: 1.35rem;
+    color: #17324d !important;
 }
 
-/* Formulario */
+/* Subtítulos */
+div[data-testid="stVerticalBlockBorderWrapper"] h2 {
+    color: #17324d !important;
+}
+
+/* ==========================================
+   FORMULARIO
+========================================== */
+
 div[data-testid="stForm"] {
-    border: 1px solid #b5d4f0 !important;
+    border: 1px solid #c7def2 !important;
     border-radius: 12px;
     padding: 1rem !important;
     background-color: transparent !important;
 }
 
-/* Campos de entrada */
+/* ==========================================
+   CAMPOS DE USUARIO Y CONTRASEÑA
+========================================== */
+
+/* Fondo azul muy claro */
 [data-baseweb="input"] {
-    border: 1px solid #a9c8e5;
-    border-radius: 999px;
-    background-color: #ffffff;
+    background-color: #b5d4f0 !important;
+    border: 1px solid #b5d4f0 !important;
+    border-radius: 999px !important;
+    overflow: hidden;
 }
 
+/* Interior de los campos */
+[data-baseweb="input"] > div {
+    background-color: #ffffff !important;
+    border-radius: 999px !important;
+}
+
+/* Texto que escribe el usuario */
 [data-baseweb="input"] input {
+    background-color: #ffffff !important;
+    color: #17324d !important;
+    -webkit-text-fill-color: #17324d !important;
+    border-radius: 999px !important;
+}
+
+/* Texto de ejemplo */
+[data-baseweb="input"] input::placeholder {
+    color: #8099b2 !important;
+    -webkit-text-fill-color: #8099b2 !important;
+}
+
+/* Campos del formulario de pacientes */
+div[data-testid="stForm"] input,
+div[data-testid="stForm"] input[role="spinbutton"] {
+    background-color: #ffffff !important;
     color: #17324d !important;
     -webkit-text-fill-color: #17324d !important;
 }
 
-[data-baseweb="input"] input::placeholder {
-    color: #71869b !important;
-    -webkit-text-fill-color: #71869b !important;
+div[data-testid="stForm"] [data-baseweb="input"],
+div[data-testid="stForm"] [data-baseweb="input"] > div {
+    background-color: #ffffff !important;
 }
 
-/* Botón Ingresar */
+/* Botón para mostrar contraseña */
+[data-baseweb="input"] button {
+    background-color: transparent !important;
+    color: #347bc1 !important;
+    border: none !important;
+}
+
+/* Icono de contraseña */
+[data-baseweb="input"] svg {
+    color: #347bc1 !important;
+}
+
+/* ==========================================
+   BOTÓN INGRESAR
+========================================== */
+
 div.stFormSubmitButton > button {
-    width: 100%;
-    border: 0;
+    width: auto !important;
+    min-width: 90px;
+    padding: 0.5rem 1.2rem;
+    border: none !important;
     border-radius: 999px;
-    background-color: #347bc1;
+    background-color: #347bc1 !important;
     color: #ffffff !important;
     font-weight: 600;
 }
 
+/* Efecto al pasar el cursor */
 div.stFormSubmitButton > button:hover {
-    background-color: #2463a6;
+    background-color: #2463a6 !important;
 }
 
-/* Texto del botón Ingresar */
-div.stFormSubmitButton > button p {
+/* Texto blanco del botón */
+div.stFormSubmitButton > button p,
+div.stFormSubmitButton > button span {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
 }
 
-/* Opciones debajo del formulario */
-div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button {
-    width: 100% !important;
-    min-height: 2.5rem;
-    padding: 0.5rem 0.25rem !important;
-    border: 1px solid #2463a6 !important;
-    border-radius
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    : 999px;
-    background-color: #9b1389 !important;
+/* ==========================================
+   ENLACES DE REGISTRO Y CONTRASEÑA
+========================================== */
+
+/* Enlaces transparentes y compactos */
+div.stButton > button[kind="tertiary"] {
+    width: auto !important;
+    min-height: 18px !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
     box-shadow: none !important;
 }
 
-/* Enlaces: contraseña y registro */
-div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button p,
-div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button span,
-div[data-testid="stHorizontalBlock"] div[data-testid="stButton"] button * {
+/* Texto azul suave con subrayado fino */
+div.stButton > button[kind="tertiary"] p,
+div.stButton > button[kind="tertiary"] span {
+    color: #5596cf !important;
+    -webkit-text-fill-color: #5596cf !important;
+    font-size: 0.82rem !important;
+    font-weight: 400 !important;
+
+    text-decoration-line: underline !important;
+    text-decoration-color: #a5cbe9 !important;
+    text-decoration-thickness: 0.5px !important;
+    text-underline-offset: 3px !important;
+}
+
+/* Efecto al pasar el cursor */
+div.stButton > button[kind="tertiary"]:hover {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+div.stButton > button[kind="tertiary"]:hover p,
+div.stButton > button[kind="tertiary"]:hover span {
     color: #2463a6 !important;
     -webkit-text-fill-color: #2463a6 !important;
-    font-size: 0.8rem;
-    text-decoration: underline;
+}
+
+/* Reducir espacios de los enlaces */
+div.stButton:has(button[kind="tertiary"]) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Acercar los enlaces al formulario */
+div[data-testid="stVerticalBlock"]:has(
+    div.stButton > button[kind="tertiary"]
+) {
+    gap: 0.35rem !important;
+}
+
+/* ==========================================
+   OTROS COMPONENTES
+========================================== */
+
+/* Opciones de selección */
+[data-testid="stRadio"] {
+    margin-bottom: 1.5rem;
+}
+
+[data-testid="stRadio"] label p {
+    color: #17324d !important;
+}
+
+/* Campos de texto grandes */
+[data-baseweb="textarea"] {
+    background-color: #f8fbff !important;
+}
+
+[data-baseweb="textarea"] textarea {
+    background-color: #f8fbff !important;
+    color: #17324d !important;
+    -webkit-text-fill-color: #17324d !important;
+}
+
+/* ==========================================
+   ADAPTACIÓN A CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+    .block-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.6rem !important;
+    }
+
+    div.stButton > button[kind="tertiary"] p {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* ==========================================
+   BARRA LATERAL IZQUIERDA
+========================================== */
+
+/* Fondo azul claro */
+[data-testid="stSidebar"],
+[data-testid="stSidebarContent"] {
+    background-color: #b9caeb !important;
+}
+
+/* Textos del menú */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] span {
+    color: #17324d !important;
+    -webkit-text-fill-color: #17324d !important;
+}
+
+/* Opciones del menú */
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    color: #17324d !important;
+}
+
+/* Botón Cerrar sesión */
+[data-testid="stSidebar"] div.stButton > button {
+    background-color: #347bc1 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+}
+
+/* Texto blanco del botón */
+[data-testid="stSidebar"] div.stButton > button p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Efecto al pasar el cursor */
+[data-testid="stSidebar"] div.stButton > button:hover {
+    background-color: #2463a6 !important;
+}
+
+/* Icono para abrir y cerrar el menú */
+[data-testid="stSidebar"] button svg {
+    color: #17324d !important;
 }
