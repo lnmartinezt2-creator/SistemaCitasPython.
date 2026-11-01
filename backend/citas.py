@@ -44,3 +44,42 @@ def listar_citas():
         )
 
         return cursor.fetchall()
+    
+    
+def actualizar_cita(cita_id, fecha, hora, motivo):
+    """Actualiza la información de una cita programada."""
+
+    with conectar() as conexion:
+        cursor = conexion.execute(
+            """
+            UPDATE citas
+            SET fecha = ?,
+                hora = ?,
+                motivo = ?
+            WHERE id = ?
+              AND estado = 'Programada'
+            """,
+            (fecha, hora, motivo, cita_id)
+        )
+
+        conexion.commit()
+        return cursor.rowcount > 0
+
+
+def cancelar_cita(cita_id):
+    """Cambia el estado de una cita a Cancelada."""
+
+    with conectar() as conexion:
+        cursor = conexion.execute(
+            """
+            UPDATE citas
+            SET estado = 'Cancelada'
+            WHERE id = ?
+              AND estado = 'Programada'
+            """,
+            (cita_id,)
+        )
+
+        conexion.commit()
+        return cursor.rowcount > 0
+

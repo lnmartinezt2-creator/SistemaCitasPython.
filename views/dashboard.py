@@ -14,6 +14,8 @@ from backend.pacientes import (
 from backend.citas import (
     registrar_cita,
     listar_citas,
+    actualizar_cita,
+    cancelar_cita,
 )
 
 
@@ -387,3 +389,121 @@ def mostrar_citas() -> None:
         st.info(
             "Todavía no hay citas programadas."
         )
+        
+        
+    # ==========================================
+    # MODIFICAR Y CANCELAR CITAS
+    # ==========================================
+
+    if citas:
+
+        citas_programadas = [
+            cita for cita in citas
+            if cita[5] == "Programada"
+        ]
+
+        if citas_programadas:
+
+            opciones_citas = {
+                f"Cita {c[0]} - {c[1]} - {c[2]}": c
+                for c in citas_programadas
+            }
+
+            # MODIFICAR CITA
+            st.subheader("Modificar cita")
+
+            seleccion = st.selectbox(
+                "Selecciona la cita que deseas modificar",
+                options=list(opciones_citas.keys()),
+                key="editar_cita"
+            )
+
+            cita = opciones_citas[seleccion]
+
+            with st.form("formulario_editar_cita"):
+
+                nueva_fecha = st.date_input(
+                    "Nueva fecha",
+                    value=max(
+                        date.fromisoformat(cita[2]),
+                        date.today()
+                    ),
+                    min_value=date.today()
+                )
+
+                nueva_hora = st.time_input(
+                    "Nueva hora",
+                    value=datetime.strptime(
+                        cita[3], "%H:%M"
+                    ).time()
+                )
+
+                nuevo_motivo = st.text_area(
+                    "Motivo de la consulta",
+                    value=cita[4]
+                )
+
+                guardar_cambios = st.form_submit_button(
+                    "Guardar cambios de la cita"
+                )
+
+            if guardar_cambios:
+
+                if not nuevo_motivo.strip():
+                    st.error("El motivo es obligatorio.")
+
+                elif datetime.combine(
+                    nueva_fecha, nueva_hora
+                ) <= datetime.now():
+                    st.error(
+                        "La fecha y hora deben ser futuras."
+                    )
+
+                else:
+                    actualizado = actualizar_cita(
+                        cita[0],
+                        nueva_fecha.isoformat(),
+                        nueva_hora.strftime("%H:%M"),
+                        nuevo_motivo.strip()
+                    )
+
+                    if actualizado:
+                        st.success("Cita actualizada correctamente.")
+                        st.rerun()
+                    else:
+                        st.error("No se pudo actualizar la cita.")
+
+            # CANCELAR CITA
+            st.subheader("Cancelar cita")
+
+            seleccion_cancelar = st.selectbox(
+                "Selecciona la cita que deseas cancelar",
+                options=list(opciones_citas.keys()),
+                key="cancelar_cita"
+            )
+
+            confirmar = st.checkbox(
+                "Confirmo que deseo cancelar esta cita"
+            )
+
+            if confirmar and st.button("Cancelar cita"):
+
+                cita_seleccionada = opciones_citas[
+                    seleccion_cancelar
+                ]
+
+                cancelada = cancelar_cita(
+                    cita_seleccionada[0]
+                )
+
+                if cancelada:
+                    st.success("Cita cancelada correctamente.")
+                    st.rerun()
+                else:
+                    st.error("No se pudo cancelar la cita.")
+
+        else:
+            st.info(
+                "No hay citas programadas para modificar o cancelar."
+            )
+
